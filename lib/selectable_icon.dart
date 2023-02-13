@@ -32,7 +32,7 @@ class SelectableIcon extends StatelessWidget {
   final EdgeInsetsGeometry countPadding;
 
   /// Count of the [SelectableIcon] widget.
-  final int count;
+  final int? count;
 
   /// Callback when the [SelectableIcon] widget is tapped.
   final VoidCallback onTap;
@@ -40,10 +40,13 @@ class SelectableIcon extends StatelessWidget {
   /// Whether the [SelectableIcon] widget is selected or not.
   final bool isSelected;
 
+  /// Whether to show the count or not.
+  final bool showCount;
+
   const SelectableIcon({
     Key? key,
     this.size = 20,
-    this.count = 0,
+    this.count,
     this.padding = const EdgeInsets.all(8),
     this.animationDuration = const Duration(milliseconds: 200),
     this.selectedIcon = Icons.favorite,
@@ -57,6 +60,7 @@ class SelectableIcon extends StatelessWidget {
     this.countPadding = const EdgeInsets.only(left: 8),
     required this.onTap,
     required this.isSelected,
+    this.showCount = true,
   }) : super(key: key);
 
   @override
@@ -78,13 +82,15 @@ class SelectableIcon extends StatelessWidget {
                         size: size,
                         color: selectedColor,
                       ),
-                      Padding(
-                        padding: countPadding,
-                        child: Text(
-                          count.toString(),
-                          style: style,
-                        ),
-                      ),
+                      showCount
+                          ? Padding(
+                              padding: countPadding,
+                              child: Text(
+                                count.toString(),
+                                style: style,
+                              ),
+                            )
+                          : Container(),
                     ],
                   )
                 : Row(
@@ -95,13 +101,15 @@ class SelectableIcon extends StatelessWidget {
                         size: size,
                         color: unSelectedColor,
                       ),
-                      Padding(
-                        padding: countPadding,
-                        child: Text(
-                          count.toString(),
-                          style: style,
-                        ),
-                      ),
+                      showCount
+                          ? Padding(
+                              padding: countPadding,
+                              child: Text(
+                                count.toString(),
+                                style: style,
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
           ),
