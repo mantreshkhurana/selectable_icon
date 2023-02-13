@@ -25,10 +25,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isSelected = true;
-  bool isSelected2 = true;
-  bool isSelected3 = true;
-  bool isSelected4 = true;
+  bool isSelected = false;
+  int count = 0;
+
+  bool isSelected2 = false;
+  int count2 = 0;
+
+  bool isSelected3 = false;
+  int count3 = 0;
+
+  bool isSelected4 = false;
+  int count4 = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +44,30 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Center(
             child: SelectableIcon(
+              count: count,
               onTap: () {
                 setState(() {
                   isSelected = !isSelected;
+                  if (isSelected) {
+                    count++;
+                  } else {
+                    count--;
+                  }
                 });
               },
               isSelected: isSelected,
             ),
           ),
           SelectableIcon(
+            count: count2,
             onTap: () {
               setState(() {
                 isSelected2 = !isSelected2;
+                if (isSelected2) {
+                  count2++;
+                } else {
+                  count2--;
+                }
               });
             },
             isSelected: isSelected2,
@@ -57,9 +76,15 @@ class _MyHomePageState extends State<MyHomePage> {
             size: 50,
           ),
           SelectableIcon(
+            count: count3,
             onTap: () {
               setState(() {
                 isSelected3 = !isSelected3;
+                if (isSelected3) {
+                  count3++;
+                } else {
+                  count3--;
+                }
               });
             },
             isSelected: isSelected3,
@@ -68,14 +93,19 @@ class _MyHomePageState extends State<MyHomePage> {
             size: 70,
             selectedColor: Colors.blue,
             unSelectedColor: Colors.grey,
-            count: 10,
             animationDuration: const Duration(milliseconds: 500),
             padding: const EdgeInsets.all(10),
           ),
           SelectableIcon(
+            count: count4,
             onTap: () {
               setState(() {
                 isSelected4 = !isSelected4;
+                if (isSelected4) {
+                  count4++;
+                } else {
+                  count4--;
+                }
               });
             },
             isSelected: isSelected4,

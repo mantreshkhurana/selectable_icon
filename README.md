@@ -10,11 +10,11 @@ Convert any widget into a selectable box.
 
 ## Installation
 
-Add `selectable_icon: ^1.0.0` in your project's pubspec.yaml:
+Add `selectable_icon: ^1.0.1` in your project's pubspec.yaml:
 
 ```yaml
 dependencies:
-  selectable_icon: ^1.0.0
+  selectable_icon: ^1.0.1
 ```
 
 ## Usage
@@ -29,11 +29,17 @@ Then use `SelectableIcon` in your widget tree:
 
 ```dart
 bool isSelected = false;
+int count = 0;
 
 SelectableIcon(
   onTap: () {
     setState(() {
       isSelected = !isSelected;
+      if (isSelected) {
+        count++;
+      } else {
+        count--;
+      }
     });
   },
   isSelected: isSelected,
@@ -42,7 +48,7 @@ SelectableIcon(
   size: 70,
   selectedColor: Colors.blue,
   unSelectedColor: Colors.grey,
-  count: 10,
+  count: count,
   animationDuration: const Duration(milliseconds: 500),
   padding: const EdgeInsets.all(10),
 ),

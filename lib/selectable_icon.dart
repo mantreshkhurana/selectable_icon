@@ -19,9 +19,17 @@ class SelectableIcon extends StatelessWidget {
   /// Icon to be displayed when the [SelectableIcon] widget is not selected.
   final unSelectedIcon;
 
+  /// Color of the icon when the [SelectableIcon] widget is selected.
   final Color selectedColor;
 
+  /// Color of the icon when the [SelectableIcon] widget is not selected.
   final Color unSelectedColor;
+
+  /// Style of the text.
+  final TextStyle style;
+
+  /// Padding of the text.
+  final EdgeInsetsGeometry countPadding;
 
   /// Count of the [SelectableIcon] widget.
   final int count;
@@ -42,6 +50,11 @@ class SelectableIcon extends StatelessWidget {
     this.selectedColor = Colors.red,
     this.unSelectedIcon = Icons.favorite,
     this.unSelectedColor = Colors.grey,
+    this.style = const TextStyle(
+      fontSize: 14,
+      color: Colors.grey,
+    ),
+    this.countPadding = const EdgeInsets.only(left: 8),
     required this.onTap,
     required this.isSelected,
   }) : super(key: key);
@@ -57,15 +70,39 @@ class SelectableIcon extends StatelessWidget {
           child: Padding(
             padding: padding,
             child: isSelected
-                ? Icon(
-                    selectedIcon,
-                    size: size,
-                    color: selectedColor,
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        selectedIcon,
+                        size: size,
+                        color: selectedColor,
+                      ),
+                      Padding(
+                        padding: countPadding,
+                        child: Text(
+                          count.toString(),
+                          style: style,
+                        ),
+                      ),
+                    ],
                   )
-                : Icon(
-                    unSelectedIcon,
-                    size: size,
-                    color: unSelectedColor,
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        unSelectedIcon,
+                        size: size,
+                        color: unSelectedColor,
+                      ),
+                      Padding(
+                        padding: countPadding,
+                        child: Text(
+                          count.toString(),
+                          style: style,
+                        ),
+                      ),
+                    ],
                   ),
           ),
         ),
