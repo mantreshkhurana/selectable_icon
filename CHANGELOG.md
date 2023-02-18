@@ -1,15 +1,15 @@
 ## 1.0.3
 
-- Removed Unnecessary Package.
+- Removed unnecessary package.
 
 ## 1.0.2
 
-- Show Count Functionality Added.
+- Show count functionality added.
 
 ## 1.0.1
 
-- Count Functionality Added.
+- Count functionality added.
 
 ## 1.0.0
 
-- Initial Release.
+- Initial release.
