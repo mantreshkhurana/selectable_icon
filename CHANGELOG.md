@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Bug fixes & improvements.
+
 ## 1.0.3
 
 - Removed unnecessary package.
